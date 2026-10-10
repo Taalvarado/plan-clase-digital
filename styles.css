@@ -1,0 +1,37 @@
+/* Estilos para la barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem 2rem;
+}
+
+.navbar a {
+    color: #ecf0f1;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Contenedor flexible para las tarjetas */
+.contenedor-tarjetas {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+/* Estilo individual de las tarjetas aplicando el modelo de caja */
+.tarjeta-modulo {
+    flex: 1;
+    min-width: 280px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}

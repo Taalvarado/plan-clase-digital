@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller Práctico: Layout y Flexbox con PRIMM</title>
+    <style>
+        /* Estilos generales del entorno de trabajo */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #334155;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 6px;
+        }
+
+        nav a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .menu-flexible {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* ==========================================================
+           [ZONA DE PRUEBA 1 - FASE PREDICT & INVESTIGATE]
+           Instrucción: Comenta o borra temporalmente 'display: flex;' 
+           para ver cómo cambia el comportamiento de las tarjetas de abajo.
+           ========================================================== */
+        .contenedor-principal {
+            display: flex; 
+            gap: 15px;      
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tarjeta-modulo {
+            flex: 1;
+            min-width: 250px;
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        #pie-principal {
+            background-color: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 12px;
+            margin-top: 20px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Logotipo y Título Principal</h1>
+    </header>
+
+    <nav class="menu-flexible">
+        <a href="#">🏠 Inicio</a>
+        <a href="#">📚 Módulos</a>
+        <a href="#">⚙️ Configuración</a>
+    </nav>
+
+    <!-- Contenedor principal para aplicar la metodología PRIMM -->
+    <main class="contenedor-principal">
+        
+        <section class="tarjeta-modulo">
+            <h3>Módulo 1</h3>
+            <p>Contenido inicial de prueba para analizar el comportamiento horizontal de Flexbox.</p>
+        </section>
+
+        <section class="tarjeta-modulo">
+            <h3>Módulo 2</h3>
+            <p>Segundo bloque de contenido para verificar el espaciado automático mediante la propiedad <code>gap</code>.</p>
+        </section>
+
+        <!-- ==========================================================
+           [ZONA DE PRUEBA 2 - FASE MAKE]
+           Copia aquí abajo una etiqueta <section class="tarjeta-modulo"> 
+           adicional y cámbiale el texto a "Módulo 3" para probar el salto automático.
+           ========================================================== -->
+
+    </main>
+
+    <footer id="pie-principal">
+        Derechos Reservados &copy; 2026 — Práctica Guiada en Parejas
+    </footer>
+
+</body>
+</html>
