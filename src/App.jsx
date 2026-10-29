@@ -1,30 +1,15 @@
 import React from 'react';
-import HeaderClase from './components/HeaderClase';
-import ObjetivosCard from './components/ObjetivosCard';
 import ActividadItem from './components/ActividadItem';
 
-function App() {
-    return (
-        <div style={{ padding: '24px 16px', width: '100%', boxSizing: 'border-box' }}>
-            <HeaderClase 
-                tituloTema="Plan de Clase Digital - AMI" 
-                nombreDocente="Tonny Alvarado" 
-                horario="Sábados 07:00 - 09:20 AM" 
-            />
+export default function App() {
+  return (
+    <div style={{ maxWidth: '680px', margin: '30px auto', padding: '30px', fontFamily: 'Segoe UI, sans-serif', background: '#f8fafc', borderRadius: '16px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.05)' }}>
+      <h2 style={{ color: '#0f4c81', borderBottom: '2px solid #cbd5e1', paddingBottom: '12px', textAlign: 'center' }}>Plan de Clase Digital Interactivo</h2>
+      <p style={{ textAlign: 'center', color: '#64748b', fontSize: '0.95em', marginBottom: '25px' }}>Facultad de Humanidades | Profesorados con Especialidad TIC</p>
 
-            <ObjetivosCard 
-                competencia="Comprender la arquitectura de desarrollo basada en componentes con React, Vite y la sintaxis JSX." 
-                indicadorLogro="Dominar el paso de props y aplicar estado local interactivo con el Hook useState." 
-            />
-
-            <h2 style={{ color: 'var(--text-h)', textAlign: 'left', margin: '24px 0 16px 0' }}>Secuencia Didáctica de la Semana</h2>
-            <div>
-                <ActividadItem titulo="Introducción al paradigma modular y Vite" tiempo="1.5 horas" tipo="Teórica" />
-                <ActividadItem titulo="Taller práctico de componentes y props" tiempo="3 horas" tipo="Práctica" />
-                <ActividadItem titulo="Sincronización y control de versiones en GitHub" tiempo="2 horas" tipo="Git" />
-            </div>
-        </div>
-    );
+      <ActividadItem titulo="Trivia Rápida Interactiva" tiempo="5 minutos" tipo="Diagnóstica" descripcion="Evaluación inicial de presaberes mediante preguntas gamificadas." />
+      <ActividadItem titulo="Taller Guiado de Componentes" tiempo="25 minutos" tipo="Construcción" descripcion="Construcción modular de interfaces con React, Vite y despliegue en Vercel." />
+      <ActividadItem titulo="Pruebas de Estado con useState" tiempo="25 minutos" tipo="Aplicación" descripcion="Implementación de interactividad para expandir y contraer detalles pedagógicos." />
+    </div>
+  );
 }
-
-export default App;

@@ -1,49 +1,23 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-function ActividadItem({ titulo, tiempo, tipo }) {
-    const [completado, setCompletado] = useState(false);
+export default function ActividadItem({ titulo, tiempo, tipo, descripcion }) {
+  const [expandido, setExpandido] = useState(false);
 
-    return (
-        <div style={{ 
-            border: completado ? '1px solid var(--accent)' : '1px solid var(--border)', 
-            padding: '16px', 
-            borderRadius: '10px', 
-            marginBottom: '12px', 
-            background: completado ? 'var(--accent-bg)' : 'var(--code-bg)',
-            transition: 'all 0.3s ease',
-            textAlign: 'left'
-        }}>
-            <span style={{ 
-                background: 'var(--accent-bg)', 
-                color: 'var(--accent)', 
-                border: '1px solid var(--accent-border)',
-                padding: '3px 10px', 
-                borderRadius: '6px', 
-                fontSize: '0.8em',
-                fontWeight: 'bold'
-            }}>
-                {tipo}
-            </span>
-            <h3 style={{ margin: '10px 0 6px 0', color: 'var(--text-h)', fontSize: '18px' }}>{titulo}</h3>
-            <p style={{ margin: '0 0 12px 0', fontSize: '0.85em', color: 'var(--text)' }}>⏱️ Duración: {tiempo}</p>
-            <button 
-                onClick={() => setCompletado(!completado)}
-                style={{ 
-                    background: completado ? 'var(--accent)' : 'transparent', 
-                    color: completado ? '#fff' : 'var(--text-h)', 
-                    border: '1px solid var(--accent-border)',
-                    fontWeight: 'bold',
-                    padding: '8px 16px', 
-                    borderRadius: '6px', 
-                    cursor: 'pointer',
-                    fontSize: '0.85em',
-                    transition: 'all 0.2s'
-                }}
-            >
-                {completado ? 'Completado ✓' : 'Marcar como completado'}
-            </button>
-        </div>
-    );
+  return (
+    <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', padding: '20px', margin: '16px 0', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.02)' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+        <span style={{ fontSize: '0.75em', background: '#ffedd5', color: '#c2410c', padding: '4px 10px', borderRadius: '12px', fontWeight: 'bold', textTransform: 'uppercase' }}>{tipo}</span>
+        <span style={{ fontSize: '0.85em', color: '#64748b', fontWeight: '500' }}>⏱️ {tiempo}</span>
+      </div>
+      <h4 style={{ margin: '8px 0 12px 0', color: '#1e293b', fontSize: '1.15em' }}>{titulo}</h4>
+      <button onClick={() => setExpandido(!expandido)} style={{ background: '#0f4c81', color: '#fff', border: 'none', padding: '8px 16px', borderRadius: '6px', cursor: 'pointer', fontSize: '0.85em', fontWeight: '600' }}>
+        {expandido ? '▲ Ocultar descripción' : '▼ Ver detalle pedagógico'}
+      </button>
+      {expandido && (
+        <p style={{ marginTop: '14px', padding: '14px', background: '#f8fafc', borderRadius: '8px', color: '#334155', fontSize: '0.9em', borderLeft: '4px solid #0f4c81', lineHeight: '1.5' }}>
+          {descripcion}
+        </p>
+      )}
+    </div>
+  );
 }
-
-export default ActividadItem;
