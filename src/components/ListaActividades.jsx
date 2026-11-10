@@ -43,11 +43,11 @@ export default function ListaActividades() {
     obtenerDatosSeguros();
   }, []);
 
-  if (cargando) return <p style={{ textAlign: 'center', color: '#64748b' }}>Cargando datos desde el servidor en la nube...</p>;
+  if (cargando) return <p style={{ textAlign: 'center', color: 'var(--text)' }}>⏳ Cargando datos desde el servidor en la nube...</p>;
 
   if (errorServidor) {
     return (
-      <div style={{ padding: '15px', background: '#fee2e2', border: '1px solid #ef4444', borderRadius: '8px', color: '#b91c1c', marginTop: '20px' }}>
+      <div style={{ padding: '15px', background: 'var(--code-bg)', border: '1px solid var(--accent-border)', borderRadius: '8px', color: 'var(--text-h)', marginTop: '20px' }}>
         <p style={{ margin: 0, fontWeight: 'bold' }}>⚠️ Atención Docente / Estudiante:</p>
         <p style={{ margin: '5px 0 0 0', fontSize: '0.9em' }}>{errorServidor}</p>
       </div>
@@ -55,12 +55,14 @@ export default function ListaActividades() {
   }
 
   return (
-    <div style={{ padding: '20px', background: '#f8fafc', borderRadius: '12px', border: '1px solid #cbd5e1', boxShadow: '0 4px 6px rgba(0,0,0,0.02)', marginTop: '20px' }}>
-      <h3 style={{ color: '#0f4c81', borderBottom: '2px solid #e2e8f0', paddingBottom: '8px' }}>📋 Lista de Actividades (Sistema Blindado)</h3>
+    <div style={{ padding: '20px', marginTop: '20px' }}>
+      <h3 style={{ color: 'var(--text-h)', borderBottom: '2px solid var(--border)', paddingBottom: '8px', marginBottom: '20px' }}>
+        📋 Lista de Actividades (Sistema Blindado)
+      </h3>
       {actividades.length === 0 ? (
-        <p style={{ color: '#64748b' }}>No se encontraron registros o la tabla está vacía.</p>
+        <p style={{ color: 'var(--text)' }}>No se encontraron registros o la tabla está vacía.</p>
       ) : (
-        <ul style={{ paddingLeft: '20px', margin: '15px 0' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {actividades.map((item, index) => {
             const campos = item.fields || item;
 
@@ -70,14 +72,30 @@ export default function ListaActividades() {
             const completado = campos.completed !== undefined ? campos.completed : (campos.Completo !== undefined ? campos.Completo : false);
 
             return (
-              <li key={item.id || index} style={{ marginBottom: '10px', color: '#334155' }}>
-                <strong>{titulo}</strong> — {duracion}
-                <span style={{ color: '#1b6ca8', marginLeft: '8px', background: '#e0f2fe', padding: '2px 8px', borderRadius: '6px', fontSize: '0.85em', fontWeight: '600' }}>[{categoria}]</span>
-                {completado ? ' ✅' : ' ⏳'}
-              </li>
+              <div key={item.id || index} className="tarjeta-actividad">
+                <div style={{ marginBottom: '8px' }}>
+                  <span style={{
+                    background: 'var(--accent-bg)',
+                    border: '1px solid var(--accent-border)',
+                    color: 'var(--accent)',
+                    padding: '2px 10px',
+                    borderRadius: '6px',
+                    fontSize: '0.85em',
+                    fontWeight: '600'
+                  }}>
+                    {categoria}
+                  </span>
+                </div>
+                <h4 style={{ color: 'var(--text-h)', margin: '8px 0 6px 0', fontSize: '1.1em' }}>
+                  {titulo}
+                </h4>
+                <p style={{ color: 'var(--text)', fontSize: '0.9em', margin: 0 }}>
+                  ⏱️ Duración: {duracion} minutos {completado ? '✅' : '⏳'}
+                </p>
+              </div>
             );
           })}
-        </ul>
+        </div>
       )}
     </div>
   );
